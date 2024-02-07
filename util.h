@@ -11,26 +11,33 @@
  *  Both functions should run in time O(n*log(n)) and not O(n^2)
  */
 template <typename T>
-std::set<T> setIntersection(std::set<T>& s1, std::set<T>& s2)
+std::set<T> setIntersection(const std::set<T> &s1, const std::set<T> &s2)
 {
-
-
-
-
-
+    std::set<T> result;
+    for (typename std::set<T>::const_iterator it = s1.begin(); it != s1.end(); it++)
+    {
+        if (s2.find(*it) != s2.end())
+        {
+            result.insert(*it);
+        }
+    }
+    return result;
 }
+
 template <typename T>
-std::set<T> setUnion(std::set<T>& s1, std::set<T>& s2)
+std::set<T> setUnion(const std::set<T> &s1, const std::set<T> &s2)
 {
+    std::set<T> result = s1;
 
+    for (typename std::set<T>::const_iterator it = s2.begin(); it != s2.end(); it++)
+    {
+        result.insert(*it);
+    }
 
-
-
-
+    return result;
 }
-
 /***********************************************/
-/* Prototypes of functions defined in util.cpp */
+/* Prototypes of function   s defined in util.cpp */
 /***********************************************/
 
 std::string convToLower(std::string src);
